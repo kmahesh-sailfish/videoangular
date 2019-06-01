@@ -15,7 +15,7 @@ export class AppComponent {
   model = new Logindb();
   login () {
   // console.log(this.model);
-  this.loginservice.login(this.model);
-
-  }
+  this.loginservice.login(this.model).subscribe(
+    logUser => console.log(logUser)
+  ); }
 }

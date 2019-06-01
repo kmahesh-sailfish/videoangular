@@ -11,6 +11,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientXsrfModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { HttpErrorHandlerService } from './http-error-handler.service';
+import { RequestCacheService, RequestCache } from './request-cache.service';
+import { HttpInterceptingHandler } from '@angular/common/http/src/module';
+import { httpInterceptorProviders } from './http-interceptors/index';
 
 @NgModule({
   declarations: [
@@ -18,17 +24,26 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'My-Xsrf-Cookie',
+      headerName: 'My-Xsrf-Header',
+    }),
     FlexLayoutModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule
   ],
-  providers: [LoginService],
+  providers: [AuthService,
+  HttpErrorHandlerService,
+  {provide: RequestCache, useClass: RequestCacheService},
+  httpInterceptorProviders,
+  LoginService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
