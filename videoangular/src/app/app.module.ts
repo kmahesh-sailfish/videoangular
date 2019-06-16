@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,10 +17,12 @@ import { HttpErrorHandlerService } from './http-error-handler.service';
 import { RequestCacheService, RequestCache } from './request-cache.service';
 import { HttpInterceptingHandler } from '@angular/common/http/src/module';
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
