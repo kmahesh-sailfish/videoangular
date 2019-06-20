@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule, MatInputModule, MatCardModule, MatNativeDateModule} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,11 +19,13 @@ import { RequestCacheService, RequestCache } from './request-cache.service';
 import { HttpInterceptingHandler } from '@angular/common/http/src/module';
 import { httpInterceptorProviders } from './http-interceptors/index';
 import { LoginComponent } from './login/login.component';
+import { AnnadhnamComponent } from './annadhnam/annadhnam.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AnnadhnamComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +41,9 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule],
   providers: [AuthService,
   HttpErrorHandlerService,
   {provide: RequestCache, useClass: RequestCacheService},

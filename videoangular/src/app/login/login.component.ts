@@ -9,7 +9,7 @@ import { Logindb } from './logindb';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private readonly loginservice:LoginService){
+  constructor(private readonly loginservice: LoginService){
 
   }
   title = 'videoangular';

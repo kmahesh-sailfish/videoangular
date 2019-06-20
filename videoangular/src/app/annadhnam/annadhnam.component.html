@@ -1,0 +1,128 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between"
+  fxLayout.xs="column"
+  fxLayout.sm="column"
+>
+  <div fxFlex="5%">
+    &nbsp;
+    
+  </div>
+  <div fxFlex="90%">
+    <form [formGroup]="donorForm" (ngSubmit)="onSubmit(pendingId, donorForm)">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayout.sm="column"
+        hidden="true"
+      >
+        <div fxFlex>
+          <div class="example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Donoar Name"
+                formControlName="anndhnamId"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div class="example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Donoar Name"
+                formControlName="userName"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div class="example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Growthram Name"
+                formControlName="gowthramName"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <mat-form-field class="example-containe">
+            <input
+              matInput
+              [min]="minDate"
+              [max]="maxDate"
+              [matDatepicker]="picker"
+              formControlName="dateanndhnam"
+              placeholder="Choose a date"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div class="example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Donation"
+                formControlName="donation"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!donorForm.valid">
+        {{ pendingId == true ? "submit" : "update" }}
+      </button>
+    </form>
+    <div>&nbsp;</div>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between"
+      fxLayout.xs="column"
+      fxLayout.sm="column"
+    >
+      <div fxFlex>
+        <div fxLayout="column" *ngFor='let objc of observableBooks | async'>
+          <mat-card>
+            <div fxFlex="15%">
+              {{ objc.userName }}
+            </div>
+            <div fxFlex="15%">
+              {{ objc.gowthramName }}
+            </div>
+            <div fxFlex="15%">
+              {{ objc.dateanndhnam }}
+            </div>
+            <div fxFlex="15%">
+              {{ objc.donation }}
+            </div>
+            <div fxFlex="15%">
+              <i class="material-icons" style="font-size: 18px; color:lightblue;cursor: pointer;" (click)="getbyId(objc.anndhnamId)">
+                edit
+              </i>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="5%">
+    &nbsp;
+  </div>
+</div>
